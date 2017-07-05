@@ -6,6 +6,7 @@ import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.os.Build;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -470,6 +471,20 @@ public class PaperOnboardingEngine implements PaperOnboardingEngineDefaults {
         contentTitle.setText(PaperOnboardingPage.getTitleText());
         TextView contentText = (TextView) contentTextView.getChildAt(1);
         contentText.setText(PaperOnboardingPage.getDescriptionText());
+
+        //apply colors and sizes if needed
+        int titleTextColor = PaperOnboardingPage.getTitleTextColor();
+        int descriptionTextColor = PaperOnboardingPage.getDescriptionTextColor();
+        int titleTextSizeSP = PaperOnboardingPage.getTitleTextSizeSP();
+        int descriptionTextSizeSP = PaperOnboardingPage.getDescriptionTextSizeSP();
+        if(titleTextColor!=0)
+            contentTitle.setTextColor(titleTextColor);
+        if(descriptionTextColor!=0)
+            contentText.setTextColor(descriptionTextColor);
+        if(titleTextSizeSP!=0)
+            contentTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, titleTextSizeSP);
+        if(descriptionTextSizeSP!=0)
+            contentText.setTextSize(TypedValue.COMPLEX_UNIT_SP, descriptionTextSizeSP);
         return contentTextView;
     }
 
